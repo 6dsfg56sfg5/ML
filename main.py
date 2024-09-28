@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-PATH_TO_FILE: str = 'C:\\ML1\\ML\\diamond.csv'
+PATH_TO_FILE: str = 'ML\\diamond.csv'
 
 df = pd.read_csv(PATH_TO_FILE) # функция превращение данных из CSV в DataFrame
 
