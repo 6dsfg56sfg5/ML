@@ -26,6 +26,13 @@ plt.title('Price')
 plt.xlabel('Price')
 plt.show()
 
+correlation_matrix = df[['Carat Weight', 'Price']].corr()
+
+# Визуализация тепловой карты
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
+plt.title('Корреляционная матрица')
+plt.show()
+
 
 
 
