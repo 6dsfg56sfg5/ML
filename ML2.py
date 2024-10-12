@@ -4,6 +4,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy import stats
 from matplotlib import pyplot as plt
+from sklearn.metrics import roc_curve, auc
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report
 
 df = pd.read_csv('\\ML1\\ML\\diamond.csv')
 #print(df.info())
@@ -71,10 +76,7 @@ for col in numeric_cols:
     #print("\n" + "="*50 + "\n")
 
 #print(df[df.select_dtypes(include=[np.number]).columns].corr())
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, classification_report
+
 
 # Выбираем категориальные признаки
 categorical_features = X.select_dtypes(include=['object']).columns.tolist()
@@ -146,7 +148,7 @@ scores = cross_val_score(model, X_processed, Y, cv=5, scoring='accuracy')
 #print(f"Средняя точность при кросс-валидации: {scores.mean():.4f}")
 #print(f"Отклонение точности: {scores.std():.4f}")
 X_train, X_test, Y_train, Y_test = train_test_split(X_processed, Y, test_size=0.2, random_state=42, stratify=Y)
-from sklearn.metrics import roc_curve, auc
+
 
 # Предсказания вероятностей для тестовой выборки
 Y_test_prob = model.predict_proba(X_test)[:, 1]
